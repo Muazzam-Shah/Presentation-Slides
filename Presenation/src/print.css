@@ -1,0 +1,64 @@
+/**
+ * EXECUTIVE SAFE - PRINT STYLESHEET
+ * Print to PDF backup for when internet/browser fails during the meeting
+ * 
+ * Usage:
+ * 1. Open the presentation in browser
+ * 2. Press Ctrl+P (Windows) or Cmd+P (Mac)
+ * 3. Select "Save as PDF"
+ * 4. Settings: Landscape, No margins, Background graphics ON
+ * 
+ * This creates a static PDF backup with one slide per page
+ */
+
+@media print {
+  /* Remove all interactive elements */
+  button,
+  .fixed,
+  [class*="navigation"],
+  [class*="control"] {
+    display: none !important;
+  }
+
+  /* Force page breaks between slides */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Each slide gets its own page */
+  .slide,
+  [class*="Slide"] {
+    page-break-after: always;
+    page-break-inside: avoid;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Ensure dark backgrounds print correctly */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Optimize for PDF export */
+  @page {
+    size: landscape;
+    margin: 0;
+  }
+}
+
+/**
+ * ALTERNATIVE: Static HTML Export Script
+ * Run this in browser console to download as static HTML file
+ * 
+ * const html = document.documentElement.outerHTML;
+ * const blob = new Blob([html], { type: 'text/html' });
+ * const link = document.createElement('a');
+ * link.href = URL.createObjectURL(blob);
+ * link.download = 'awt-presentation-backup.html';
+ * link.click();
+ */

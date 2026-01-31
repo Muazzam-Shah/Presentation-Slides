@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-exec-bg-secondary text-exec-text-primary font-manrope antialiased;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* High contrast selection for accessibility */
+  ::selection {
+    @apply bg-exec-brand text-white;
+  }
+}
+
+@layer utilities {
+  /* Executive Safe - Minimal utilities only */
+  .aspect-slide {
+    aspect-ratio: 16 / 9;
+  }
+  
+  .safe-area {
+    /* Account for TV bezel cutoffs */
+    max-width: 1600px;
+    max-height: 900px;
+    margin: 0 auto;
+  }
+}
