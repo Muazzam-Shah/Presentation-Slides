@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd Presenation && npm run build",
+  "outputDirectory": "Presenation/dist",
+  "installCommand": "cd Presenation && npm install --legacy-peer-deps",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
